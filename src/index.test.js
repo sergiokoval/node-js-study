@@ -16,7 +16,7 @@ describe('index.html', ()=>{
         const dom = new jsdom.JSDOM(index);
         var h1 = dom.window.document.getElementsByTagName('h1')[0];  
                 
-        expect(h1.innerHTML).to.equal('hello');
+        expect(h1.innerHTML).to.equal('helloo');
        
         
     })
