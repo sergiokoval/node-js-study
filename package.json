@@ -1,0 +1,51 @@
+{
+  "name": "js-study",
+  "version": "1.0.0",
+  "main": "program.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "check": "^1.0.0",
+    "express": "^4.15.4",
+    "localtunnel": "^1.8.3",
+    "nodeunit": "^0.11.1",
+    "open": "0.0.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.6.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-watch": "^3.1.2",
+    "jsdom": "^11.2.0",
+    "mocha": "^3.5.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-middleware": "^1.12.0"
+  },
+  "scripts": {
+    "prestart": "babel-node buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel security-check startapplication lint:watch test2:watch",
+    "startapplication": "babel-node buildScripts/srcServer.js",
+    "test": "nodeunit test",
+    "lint": "esw src webpack.config.* buildScripts --color",
+    "lint:watch": "npm run lint -- --watch",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000",
+    "share": "npm-run-all --parallel startapplication localtunnel",
+    "test2": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test2:watch": "npm run test2 -- --watch"
+  },
+  "author": "'Serge'",
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
+}
