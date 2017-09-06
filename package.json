@@ -33,16 +33,16 @@
   },
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check startapplication lint:watch test2:watch",
+    "start": "npm-run-all --parallel security-check startapplication lint:watch test:watch",
     "startapplication": "babel-node buildScripts/srcServer.js",
-    "test": "nodeunit test",
+    "test2": "nodeunit test",
     "lint": "esw src webpack.config.* buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000",
     "share": "npm-run-all --parallel startapplication localtunnel",
-    "test2": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test2:watch": "npm run test2 -- --watch"
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test2 -- --watch"
   },
   "author": "'Serge'",
   "license": "ISC",
