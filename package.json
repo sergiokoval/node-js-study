@@ -20,16 +20,21 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "css-loader": "^0.28.7",
     "eslint": "^4.6.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-watch": "^3.1.2",
     "jsdom": "^11.2.0",
-    "mocha": "^3.5.0",
+    "json-schema-faker": "^0.4.3",
+    "json-server": "^0.12.0",
+    "mocha": "^3.5.1",
+    "npm-run-all": "^4.1.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
-    "webpack-dev-middleware": "^1.12.0"
+    "webpack-dev-middleware": "^1.12.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
@@ -42,7 +47,9 @@
     "localtunnel": "lt --port 3000",
     "share": "npm-run-all --parallel startapplication localtunnel",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test2 -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node buildScripts/generateMockData.js",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "'Serge'",
   "license": "ISC",
