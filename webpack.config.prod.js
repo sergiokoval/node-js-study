@@ -1,8 +1,9 @@
 import path from 'path';
+import webpack from 'webpack';
 import htmlWebPackPlugin from 'html-webpack-plugin';
 
 export default  {
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     entry: [
       path.resolve(__dirname, 'src/index')
     ],
@@ -12,10 +13,14 @@ export default  {
       filename: 'bundle.js'
     },
     plugins: [
-       new htmlWebPackPlugin({
+      new htmlWebPackPlugin({
         template: 'src/index.html',
         inject: 'true'
-      })
+      }),
+      // eliminate duplicate packages wehn generating bundle
+      new webpack.optimize.DedupePlugin(),
+      // minify js
+      new webpack.optimize.UglifyJsPlugin()
      ],
     module: {
       loaders: [
